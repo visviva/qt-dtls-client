@@ -20,6 +20,8 @@ add_executable(DTLSClient
   MainWindow.ui
   DTLSClient.h
   DTLSClient.cpp
+  DTLSConfigurationFactory.h
+  DTLSConfigurationFactory.cpp
 )
 
 target_link_libraries(DTLSClient PRIVATE Qt5::Widgets Qt5::Network)
