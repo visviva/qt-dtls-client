@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include "DTLSClient.h"
+#include "DTLSConfigurationFactory.h"
 #include <QMainWindow>
+#include <QSslConfiguration>
 
 QT_BEGIN_NAMESPACE
 namespace Ui
@@ -16,17 +18,19 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
   public:
-    explicit MainWindow (QWidget *parent = nullptr);
-    ~MainWindow () override;
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow() override;
 
   Q_SIGNALS:
-    void signalStartHandshake (const QHostAddress &, const int &);
+    void signalStartHandshake(const QHostAddress &, const int &,
+                              QSslConfiguration);
 
   public Q_SLOTS:
-    void appendToLog (QByteArray Data, bool ReceivedNotSend);
+    void appendToLog(const QByteArray &Data, bool ReceivedNotSend);
 
   private:
     Ui::MainWindow *ui;
     DTLSClient *mClient;
+    DTLSConfigurationFactory *mConfigFactory;
 };
 #endif // MAINWINDOW_H

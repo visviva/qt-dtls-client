@@ -2,10 +2,11 @@
 #define DTLSCLIENT_H
 
 #include <QDtls>
+#include <QFile>
 #include <QObject>
+#include <QSslConfiguration>
 #include <QTimer>
 #include <QUdpSocket>
-#include <QFile>
 
 class DTLSClient : public QObject
 {
@@ -18,18 +19,20 @@ class DTLSClient : public QObject
     QFile mKey{this};
 
   public:
-    explicit DTLSClient (QObject *parent = nullptr);
-    QByteArray decrypt (QByteArray EncryptedData);
-    void handleError ();
+    explicit DTLSClient(QObject *parent = nullptr);
+    QByteArray decrypt(QByteArray EncryptedData);
+    void handleError();
 
   Q_SIGNALS:
-    void received (QByteArray Data);
-    void status (QString Status);
+    void received(QByteArray Data);
+    void status(QString Status);
 
   public Q_SLOTS:
-    void startHandshake (QHostAddress PeerAddress, int PeerPort);
-    void receive ();
-    void send (QByteArray Data);
+    void startHandshake(QHostAddress PeerAddress, int PeerPort,
+                        QSslConfiguration Config);
+    void receive();
+    void send(QByteArray Data);
+    void closeConnection();
 };
 
 #endif // DTLSCLIENT_H

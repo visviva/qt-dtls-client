@@ -11,11 +11,16 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>DTLS Client</string>
   </property>
   <property name="styleSheet">
    <string notr="true">#centralwidget { background: rgba(32, 80, 96, 100); }
 QLabel 
+{ 
+color: white; 
+background: rgba(32, 80, 96, 100);
+}
+QCheckBox
 { 
 color: white; 
 background: rgba(32, 80, 96, 100);
@@ -41,7 +46,7 @@ QPushButton:hover {background-color: rgb(154, 153, 221);}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0">
+    <item row="1" column="0">
      <widget class="QLineEdit" name="IpEdit">
       <property name="text">
        <string>127.0.0.1</string>
@@ -51,42 +56,74 @@ QPushButton:hover {background-color: rgb(154, 153, 221);}</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="0" colspan="2">
+    <item row="0" column="1">
+     <widget class="QLabel" name="PortLabel">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Port</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0" colspan="2">
      <widget class="QPushButton" name="StartHandshakeBtn">
       <property name="text">
        <string>Start Handshake</string>
       </property>
      </widget>
     </item>
-    <item row="7" column="0" colspan="2">
+    <item row="5" column="0">
+     <widget class="QCheckBox" name="VerifyPeerCheckbox">
+      <property name="text">
+       <string>Verify Peer</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="0" colspan="2">
      <widget class="QPushButton" name="SendDataBtn">
       <property name="text">
        <string>Send Data</string>
       </property>
      </widget>
     </item>
-    <item row="4" column="0" colspan="2">
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
+    <item row="1" column="1">
      <widget class="QLineEdit" name="PortEdit">
       <property name="text">
        <string>4444</string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
-     <widget class="QLabel" name="ConnectionState">
+    <item row="4" column="1">
+     <widget class="QPushButton" name="SetCABtn">
       <property name="text">
-       <string>Connection State:</string>
+       <string>Set CA</string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0" colspan="2">
+    <item row="11" column="0" colspan="2">
+     <widget class="QLineEdit" name="SendDataEdit"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLineEdit" name="CALineEdit"/>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLabel" name="ConnecntionStateLabel">
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0" colspan="2">
      <widget class="QPlainTextEdit" name="Log">
       <property name="font">
        <font>
@@ -98,22 +135,66 @@ QPushButton:hover {background-color: rgb(154, 153, 221);}</string>
       </property>
      </widget>
     </item>
-    <item row="2" column="0" colspan="2">
+    <item row="9" column="0" colspan="2">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="KeyLineEdit"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="SetKeyBtn">
+      <property name="text">
+       <string>Set Key</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="SetCertBtn">
+      <property name="text">
+       <string>Set Certificate</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="IpAddressLabel">
+      <property name="font">
+       <font>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>IP Address</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0" colspan="2">
      <widget class="Line" name="line_2">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
-    <item row="3" column="1">
-     <widget class="QLabel" name="ConnecntionStateLabel">
+    <item row="8" column="0">
+     <widget class="QLabel" name="ConnectionState">
       <property name="text">
-       <string/>
+       <string>Connection State:</string>
       </property>
      </widget>
     </item>
-    <item row="6" column="0" colspan="2">
-     <widget class="QLineEdit" name="SendDataEdit"/>
+    <item row="3" column="0">
+     <widget class="QLineEdit" name="CertLineEdit"/>
+    </item>
+    <item row="13" column="0" colspan="2">
+     <widget class="QPushButton" name="CloseConnectionBtn">
+      <property name="text">
+       <string>Close Connection</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
